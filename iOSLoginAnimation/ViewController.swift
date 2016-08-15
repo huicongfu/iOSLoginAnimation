@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     
     let spinner = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     let warningMessage = UIImageView.init(image: UIImage.init(named: "Warning"))
+    var loginPosition = CGPointZero;
     
     
     
@@ -59,11 +60,13 @@ class ViewController: UIViewController {
         self.userName.center.x -= self.view.bounds.width
         self.password.center.x -= self.view.bounds.width
         
+        self.loginPosition = self.loginBtn.center
         self.loginBtn.center.x -= self.view.bounds.width
+        
         
         self.view.addSubview(self.warningMessage)
         self.warningMessage.hidden = true
-        self.warningMessage.center = CGPointZero
+        self.warningMessage.center = self.loginPosition
         
     }
     
@@ -126,6 +129,38 @@ class ViewController: UIViewController {
         UIView.transitionWithView(self.warningMessage, duration: 0.3, options: .TransitionFlipFromTop, animations: { 
             self.warningMessage.hidden = true
             }, completion: nil)
+        
+       UIView.animateWithDuration(0.3, animations: { 
+        
+        self.loginBtn.center = self.loginPosition;
+        
+        }, completion: { _ in
+            
+            
+            self.loginBtn.center.x -= 30
+            
+            UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: [], animations: { 
+                
+                    self.loginBtn.center.x += 30
+                
+                }, completion: { (Bool) in
+                    
+                    UIView.animateWithDuration(0.3, animations: { 
+                        
+                        self.loginBtn.center.y += 90
+                        self.spinner.removeFromSuperview()
+                        
+                        }, completion: { (Bool) in
+                            
+                            UIView.transitionWithView(self.warningMessage, duration: 0.3, options: [.TransitionFlipFromTop, .CurveEaseOut], animations: {
+                                
+                                    self.warningMessage.hidden = false
+                                
+                                }, completion: nil)
+                    })
+            })
+            
+       })
         
     }
 

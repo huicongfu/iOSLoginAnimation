@@ -52,7 +52,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkY-tV-yOR">
-                                <rect key="frame" x="24" y="344" width="335" height="50"/>
+                                <rect key="frame" x="24" y="344" width="335" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="0.66720333614864868" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Login in" backgroundImage="Button Background"/>
